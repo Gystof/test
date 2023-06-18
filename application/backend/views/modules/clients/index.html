@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<a href="{{ url_for('backend.clients.create') }}" class="btn btn-primary">Добавить регион</a>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Email</th>
+      <th scope="col">Тариф</th>
+      <th scope="col">Дата создания</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in items %}
+    <tr>
+      <th scope="row">
+        {{ item.id }}
+      </th>
+      <td>
+        {{ item.email }}
+      </td>
+      <td>
+        {{ item.tarif }}
+      </td>
+      <td>
+        {{ item.created_at }}
+      </td>
+      <td>
+        <a href="{{ url_for('backend.clients.update', id=item.id) }}">Изменить</a> |
+        <a href="{{ url_for('backend.clients.delete', id=item.id) }}">Удалить</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
+
